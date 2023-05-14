@@ -1,0 +1,25 @@
+version: '3.3'
+
+services:
+  ci:
+    build:
+      context: .
+      dockerfile: CI.Dockerfile
+    container_name: server-ci
+    restart: 'no'
+    volumes:
+      - ./build:/app/build
+  server:
+    depends_on:
+      - ci
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: server
+    restart: 'no'
+    volumes:
+      - ./build:/app/build
+    ports:
+      - '3000:3000'
+    expose:
+      - '3000'
