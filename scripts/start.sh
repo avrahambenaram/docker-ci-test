@@ -2,5 +2,5 @@ sleep 30 &
 wait
 
 rm -rf src
-npm i -P
+npm i --omit=dev
 npm start
