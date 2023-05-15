@@ -1,1 +1,5 @@
 node_modules
+CI.Dockerfile
+Dockerfile
+Prod.Dockerfile
+docker-compose.yml
