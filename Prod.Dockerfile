@@ -8,8 +8,8 @@ RUN npm run build
 # Production stage
 FROM --platform=$BUILDPLATFORM node:16.19.1-alpine3.16 as production
 WORKDIR /app
-COPY . .
-RUN rm -rf src scripts
+COPY --from=compiling /app .
+RUN rm -rf src scripts node_modules
 RUN npm i --omit=dev
 CMD npm start
 
